@@ -1,0 +1,57 @@
+{
+  "mcpServers": {
+    "paul-dirac-ai": {
+      "command": "cargo",
+      "args": [
+        "run",
+        "--release",
+        "--quiet"
+      ],
+      "env": {
+        "RUST_LOG": "info",
+        "TITAN_PROTOCOL": "DIRAC",
+        "FIPS_203_LEVEL": "ML-KEM-768",
+        "FIPS_204_LEVEL": "ML-DSA-65"
+      },
+      "tools": [
+        {
+          "name": "solve_dirac_spinor_equation",
+          "description": "Computes relativistic 4-component electron-positron wavefunctions using gamma matrices",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "particle_mass_mev": {
+                "type": "number"
+              },
+              "four_momentum": {
+                "type": "array"
+              }
+            },
+            "required": [
+              "particle_mass_mev"
+            ]
+          }
+        },
+        {
+          "name": "evaluate_bra_ket_inner_product",
+          "description": "Executes projective measurement probability amplitudes and unitary operators in Dirac notation",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "ket_state": {
+                "type": "string"
+              },
+              "bra_state": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "ket_state",
+              "bra_state"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
